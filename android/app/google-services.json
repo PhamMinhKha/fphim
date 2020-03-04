@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "911957332194",
+    "firebase_url": "https://fphim-c2cb6.firebaseio.com",
+    "project_id": "fphim-c2cb6",
+    "storage_bucket": "fphim-c2cb6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911957332194:android:03f425437d2040ddfa0ebb",
+        "android_client_info": {
+          "package_name": "com.fphim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911957332194-ath62ckj2lnfgq740qm3u9ti0j3ssl1g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyYpnOJmk55c3TNlyWRuezHatvb7Tw7ug"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911957332194-ath62ckj2lnfgq740qm3u9ti0j3ssl1g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

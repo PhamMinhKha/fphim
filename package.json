@@ -1,0 +1,51 @@
+{
+  "name": "Fphim",
+  "version": "1.0.1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "chay": "react-native run-android --variant=release",
+    "chplay": "cd android && ./gradlew bundleRelease",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.8.1",
+    "@react-native-community/slider": "^2.0.8",
+    "@react-native-firebase/app": "^6.3.4",
+    "@react-native-firebase/database": "^6.3.4",
+    "axios": "^0.19.2",
+    "fast-html-parser": "^1.0.1",
+    "react": "16.9.0",
+    "react-native": "0.61.5",
+    "react-native-exit-app": "^1.1.0",
+    "react-native-navigation": "^6.0.1",
+    "react-native-navigation-bar-color": "^1.0.0",
+    "react-native-orientation-locker": "^1.1.8",
+    "react-native-send-intent": "^1.2.2",
+    "react-native-snap-carousel": "^3.8.4",
+    "react-native-splash-screen": "^3.2.0",
+    "react-native-video": "^5.0.2",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5",
+    "redux-saga": "^1.1.3",
+    "util": "^0.12.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/runtime": "^7.8.4",
+    "@bam.tech/react-native-make": "^2.0.0",
+    "@react-native-community/eslint-config": "^0.0.7",
+    "babel-jest": "^25.1.0",
+    "eslint": "^6.8.0",
+    "jest": "^25.1.0",
+    "metro-react-native-babel-preset": "^0.58.0",
+    "react-test-renderer": "16.9.0",
+    "redux-devtools-extension": "^2.13.8"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
