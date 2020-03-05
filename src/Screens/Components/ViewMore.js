@@ -12,7 +12,6 @@ import {
 } from 'react-native';
 import ItemMovie from './ItemMovie';
 import {useSelector} from 'react-redux';
-
 var width = Dimensions.get('screen').width;
 var height = Dimensions.get('screen').height;
 var checkNgang = width > height ? true : false;
@@ -20,6 +19,7 @@ import {getViewMore} from '../API/getViewMore';
 
 const ViewMore = () => {
   const link = useSelector(state => state.setting.link);
+  const tab = useSelector(state => state.setting.tab);
   const [listPhim, setlistPhim] = useState([]);
   const [page, setPage] = useState(1);
   const [myButton, setMyButton] = useState(0.85);
@@ -55,7 +55,7 @@ const ViewMore = () => {
   }
   return (
     <View style={{flex: 1}}>
-      <Text style={styles.title}>Danh Sách Phim</Text>
+      <Text style={styles.title}>{tab}</Text>
       {/* <ScrollView onScroll={t => console.log(t)}>
         <View
           style={styles.car}
@@ -71,7 +71,7 @@ const ViewMore = () => {
         renderItem={({item}) => <ItemMovie item={item} />}
         keyExtractor={(item, index) => index.toString()}
         style={styles.car}
-        numColumns={checkNgang ? 6 : 3}
+        numColumns={checkNgang ? 5 : 3}
         onScroll={t => console.log(t)}
         onResponderEnd={() => {
           setPage(page + 1);

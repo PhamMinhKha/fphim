@@ -30,7 +30,7 @@ const ChapterItem = ({item}) => {
       onBlur={() => setMystyle({bg: '#f5ec42'})}
       onPress={() => XemPhim(item.link)}>
       <Text style={[styles.tap, {backgroundColor: myStyle.bg}]}>
-        {item.name}
+        {item.name + ' (' + item.size +')'}
       </Text>
     </TouchableOpacity>
   );

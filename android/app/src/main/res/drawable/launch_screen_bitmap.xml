@@ -2,7 +2,7 @@
   <item android:drawable="@color/splashBackground"/>
   <item>
     <bitmap
-      android:src="@drawable/launch_screen"
-      android:gravity="center"/>
+      android:src="@drawable/splash_image"
+      android:gravity="clip_vertical"/>
   </item>
 </layer-list>

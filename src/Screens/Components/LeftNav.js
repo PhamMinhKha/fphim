@@ -22,22 +22,22 @@ const DATA = [
   },
   {
     title: 'Hành động',
-    id: 'hanh-dong',
+    id: 'Hành động',
     link: 'https://phim.didibkk.com/genre/hanh-dong/',
   },
   {
     title: 'Khoa học viễn tưỡng',
-    id: 'khoa-hoc-vien-tuong',
+    id: 'Khoa học viễn tưỡng',
     link: 'https://phim.didibkk.com/genre/khoa-hoc-vien-tuong/',
   },
   {
     title: 'Hài hước',
-    id: 'hai-huoc',
+    id: 'Hài hước',
     link: 'https://phim.didibkk.com/genre/hai-huoc/',
   },
   {
     title: 'Hoạt hình',
-    id: 'hoat-hinh',
+    id: 'Hoạt hình',
     link: 'https://phim.didibkk.com/genre/hoat-hinh/',
   },
   // {

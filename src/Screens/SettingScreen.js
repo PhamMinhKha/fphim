@@ -27,7 +27,7 @@ const SettingScreen = () => {
     version: null,
   });
   useEffect(() => {
-    // dispatch({type: 'GET_STORE'});
+    dispatch({type: 'GET_STORE'});
     GetVersion().then(data => {
       console.log(data);
       setVersion(data);
@@ -82,6 +82,32 @@ const SettingScreen = () => {
         />
         <Text style={styles.textCode}>MX Player Pro</Text>
       </View>
+      <View style={styles.checkBox}>
+        <CheckBox
+          value={tmpSetting.player === 'org.videolan.vlc' ? true : false}
+          onChange={() =>
+            setSetting(
+              Object.assign({}, tmpSetting, {
+                player: 'org.videolan.vlc',
+              }),
+            )
+          }
+        />
+        <Text style={styles.textCode}>VLC player</Text>
+      </View>
+      <View style={styles.checkBox}>
+        <CheckBox
+          value={tmpSetting.player === 'org.xbmc.kodi' ? true : false}
+          onChange={() =>
+            setSetting(
+              Object.assign({}, tmpSetting, {
+                player: 'org.xbmc.kodi',
+              }),
+            )
+          }
+        />
+        <Text style={styles.textCode}>Kodi</Text>
+      </View>
       <TextInput placeholder={'Nhập Code'} style={{fontSize: 30}} />
       <View style={{borderTopWidth: 1, marginTop: 15}}>
         <Text style={styles.textCode}>
@@ -96,8 +122,8 @@ const SettingScreen = () => {
           <TouchableOpacity
             onPress={() => {
               SendIntentAndroid.installRemoteApp(
-                'https://nhacsong.pro/phimthuyetminh.apk',
-                'phimthuyetminh.apk',
+                'https://nhacsong.pro/fphim.apk',
+                'fphim.apk',
               ).then(installWasStarted => {});
               // Linking.openURL(
               //   'market://details?id=com.phimthuyetminh',
@@ -122,7 +148,7 @@ const SettingScreen = () => {
           <Text style={styles.textNganHang}>TK: 0241004082388</Text>
           <Text style={styles.textNganHang}>Tên: Pham Minh Kha</Text>
           <Text style={styles.textNganHang}>
-            Nội dung: Ung ho ung dung phim thuyet minh
+            Nội dung: Ung ho ung dung f-phim
           </Text>
         </View>
       </View>

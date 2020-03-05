@@ -7,7 +7,7 @@ import DetailScreen from './../DetailScreen';
 const ItemMovie = ({item}) => {
   // console.log(item);
   const [FocusStyle, SetFocusStyle] = useState(0.9);
-  const [FocusStyle2, SetFocusStyle2] = useState('white');
+  const [FocusStyle2, SetFocusStyle2] = useState('#222');
   function push(item) {
     // Navigation.registerComponent(`Video`, () => VideoScreen);
     Navigation.registerComponent(`DetailScreen`, () => DetailScreen);
@@ -33,15 +33,19 @@ const ItemMovie = ({item}) => {
       activeOpacity={1}
       onFocus={function() {
         SetFocusStyle(1);
+        SetFocusStyle2('#eb6e34');
       }}
       onBlur={function() {
         SetFocusStyle(0.9);
+        SetFocusStyle2('#222');
       }}
       onPress={function() {
         push(item);
       }}>
-      <Image source={{uri: item.thumb}} style={{width: 118, height: 174}} />
-      <Text style={styles.title} lineBreakMode={1}>
+      <Image source={{uri: item.thumb}} style={{width: 118 * 1.2, height: 174 * 1.2}} />
+      <Text
+        style={[styles.title, {backgroundColor: FocusStyle2}]}
+        lineBreakMode={1}>
         {item.title}
       </Text>
       {item.year ? <Text style={styles.year}>{item.year}</Text> : null}
@@ -57,8 +61,8 @@ const styles = StyleSheet.create({
   item: {
     // padding: 10,
     marginHorizontal: 5,
-    width: 118,
-    height: 174,
+    width: 118 * 1.2,
+    height: 174 * 1.2,
     position: 'relative',
     backgroundColor: 'red',
     marginBottom: 40,
@@ -67,6 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     shadowColor: '#fff',
+    color: '#fff',
     shadowOffset: {
       width: 0,
       height: 7,

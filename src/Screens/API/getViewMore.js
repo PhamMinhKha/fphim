@@ -78,12 +78,12 @@ function getViewMoreAnotherCategory(link, page) {
         var htmlPhimMoi = root.querySelector('#contenedor .items')['childNodes'];
         // console.log(htmlPhimMoi);
         var listphim = [];
-        console.log(htmlPhimMoi);
+        // console.log(htmlPhimMoi);
         htmlPhimMoi.map((value, index) => {
-          console.log(value);
+          // console.log(value);
           if (value.tagName === 'article') {
             var phimmoi = {};
-            console.log(value);
+            // console.log(value);
             var tmp =
               value['childNodes'][1]['childNodes'][1].rawAttributes['src'];
 

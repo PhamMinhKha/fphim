@@ -18,15 +18,15 @@ const CarouselCom = ({PhimMoiCapNhat, title}) => {
   // console.log(sapXep);
   // console.log(refControl.current.currentIndex);
   return (
-    <View style={{height: 270}}>
+    <View style={{height: 270 * 1.2}}>
       <Text style={styles.title}>{title}</Text>
       <Carousel
         ref={refControl}
         data={PhimMoiCapNhat ? PhimMoiCapNhat : []}
         renderItem={({item}) => <ItemMovie item={item} />}
         sliderWidth={width - 200}
-        itemWidth={134}
-        itemHeight={120}
+        itemWidth={134 * 1.2}
+        itemHeight={120 * 1.2}
         activeSlideAlignment={sapXep}
         inactiveSlideScale={1}
         inactiveSlideOpacity={1}

@@ -27,7 +27,10 @@ const SearchScreen = () => {
     // );
   }
   function handleSubmit() {
-    getSearch('https://phim.didibkk.com/?s=' + keyword, 1).then(data => {
+    getSearch(
+      'https://nhacsong.pro/API/C_fshare/getSearch?keyword=' + keyword,
+      1,
+    ).then(data => {
       setListPhim(data);
     });
   }
