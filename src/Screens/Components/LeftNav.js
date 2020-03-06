@@ -40,6 +40,11 @@ const DATA = [
     id: 'Hoạt hình',
     link: 'https://phim.didibkk.com/genre/hoat-hinh/',
   },
+  {
+    title: 'Folder Fshare',
+    id: 'FolderFshare',
+    link: 'https://www.fshare.vn/site/topfollow',
+  },
   // {
   //   title: 'Phim Bộ',
   //   id: 'tv-shows',

@@ -26,6 +26,7 @@ import {
 import HomeScreen from './src/Screens/HomeScreen';
 import SettingScreen from './src/Screens/SettingScreen';
 import VideoScreen from './src/Screens/VideoScreen';
+import FolderFshare from './src/Screens/FolderFshare';
 
 import rootReducer from './src/Redux/rootReducer';
 import {Provider} from 'react-redux';
@@ -59,6 +60,12 @@ Navigation.registerComponentWithRedux(
 Navigation.registerComponentWithRedux(
   `VideoScreen`,
   () => VideoScreen,
+  Provider,
+  store,
+);
+Navigation.registerComponentWithRedux(
+  `FolderFshare`,
+  () => FolderFshare,
   Provider,
   store,
 );

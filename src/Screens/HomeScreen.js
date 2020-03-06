@@ -11,6 +11,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import LeftNav from './Components/LeftNav';
 import CarouselCom from './Components/CarouselCom';
 import ViewMore from './Components/ViewMore';
+import FolderFshare from './FolderFshare';
 import {getHome} from './API/getHome';
 import {GetVersion} from './API/API';
 import BG from './../Assets/img/bg.webp';
@@ -77,6 +78,8 @@ const HomeScreen = item => {
             <CarouselCom PhimMoiCapNhat={PhimMoiCapNhat} title="Phim Mới" />
           </>
         );
+      case 'FolderFshare':
+        return <FolderFshare />;
       default:
         return <ViewMore />;
     }

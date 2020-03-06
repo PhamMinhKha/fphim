@@ -38,18 +38,22 @@ export const getFPRO = link => {
 };
 function getLinkFshare(link) {
   return new Promise(function(resolve, reject) {
-    fetch(
-      'https://nhacsong.pro/API/C_fshare/getLinkFshareTuDidi?link=' + link,
-      {
-        method: 'GET',
-      },
-    )
-      .then(data => {
-        return data.json();
-      })
-      .then(data => {
-        resolve(data);
-      });
+    if (link.search('fshare.vn') !== -1) {
+      var tmp = {link: link};
+      resolve(tmp);
+    } else
+      fetch(
+        'https://nhacsong.pro/API/C_fshare/getLinkFshareTuDidi?link=' + link,
+        {
+          method: 'GET',
+        },
+      )
+        .then(data => {
+          return data.json();
+        })
+        .then(data => {
+          resolve(data);
+        });
   });
 }
 function getSPRO(link) {
