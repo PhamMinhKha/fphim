@@ -4,6 +4,9 @@ const initialState = {
   code: '',
   chamdiem: false,
   player: 'native',
+  useFshare: false,
+  username: null,
+  password: null,
 };
 
 export default function(state = initialState, action) {
@@ -15,6 +18,9 @@ export default function(state = initialState, action) {
         link: action.payload.link,
         code: action.payload.code,
         player: action.payload.player,
+        useFshare: action.payload.useFshare,
+        username: action.payload.username,
+        password: action.payload.password,
       };
       console.log(action);
       return newState;

@@ -7,12 +7,15 @@ import {
   TouchableOpacity,
   StyleSheet,
   ActivityIndicator,
+  FlatList,
+  View,
 } from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import ItemMovieInFolder from './ItemMovieInFolder';
 import {getFshareFolder} from './../../API/getFolderFshare';
 import bg from './../../../Assets/img/bg.webp';
 const {width, height} = Dimensions.get('screen');
+// import {FlatGrid} from 'react-native-super-grid';
 const DetailMovieInFolder = ({item}) => {
   const [list, setList] = useState([]);
   const [listMoive, setListMovie] = useState([]);
@@ -29,11 +32,21 @@ const DetailMovieInFolder = ({item}) => {
     };
   }, []);
   function showItemMovie() {
-    var HTML = [];
-    HTML = listMoive.map((value, index) => {
-      return <ItemMovieInFolder item={value} key={index} />;
-    });
-    return HTML;
+    // var HTML = [];
+
+    // HTML = listMoive.map((value, index) => {
+    //   return <ItemMovieInFolder item={value} key={index} />;
+    // });
+    // return HTML;
+    return (
+      <FlatList
+        data={listMoive}
+        renderItem={({item}) => <ItemMovieInFolder item={item} />}
+        keyExtractor={(item, index) => index.toString()}
+        style={styles.car}
+        onScroll={t => console.log(t)}
+      />
+    );
   }
   function viewNextPage() {
     setLoading(true);
@@ -48,30 +61,24 @@ const DetailMovieInFolder = ({item}) => {
     );
   }
   return (
-    <ImageBackground source={bg} style={{width, height}}>
-      <ScrollView
-        style={{flex: 1, padding: 20}}
-        onResponderEnd={() => console.log('12321')}>
-        {listMoive.length > 0 ? showItemMovie() : null}
-        <TouchableOpacity
-          activeOpacity={1}
-          onPress={() => viewNextPage()}
-          onFocus={() => setButton('#eb6e34')}
-          onBlur={() => setButton('#222')}>
-          {loading ? <ActivityIndicator size="large" color="#fff" /> : null}
-          <Text style={[styles.button, {backgroundColor: button}]}>
-            Xem Thêm
-          </Text>
-        </TouchableOpacity>
-      </ScrollView>
-    </ImageBackground>
+    <View style={{backgroundColor: '#a7c0d1', flex: 1}}>
+      {listMoive.length > 0 ? showItemMovie() : null}
+      <TouchableOpacity
+        activeOpacity={1}
+        onPress={() => viewNextPage()}
+        onFocus={() => setButton('#eb6e34')}
+        onBlur={() => setButton('#222')}>
+        {loading ? <ActivityIndicator size="large" color="#fff" /> : null}
+        <Text style={[styles.button, {backgroundColor: button}]}>Xem Thêm</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 const styles = StyleSheet.create({
   button: {
     fontSize: 25,
     padding: 5,
-    marginBottom: 50,
+    marginBottom: 10,
     alignSelf: 'flex-start',
     color: '#fff',
   },

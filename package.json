@@ -1,6 +1,6 @@
 {
   "name": "Fphim",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -27,6 +27,7 @@
     "react-native-send-intent": "^1.2.2",
     "react-native-snap-carousel": "^3.8.4",
     "react-native-splash-screen": "^3.2.0",
+    "react-native-super-grid": "^3.1.2",
     "react-native-text-ticker": "^1.0.0",
     "react-native-video": "^5.0.2",
     "react-redux": "^7.2.0",

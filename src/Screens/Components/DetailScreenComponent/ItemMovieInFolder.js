@@ -5,7 +5,7 @@ const ItemMovieInFolder = ({item}) => {
   console.log('xxxx', item);
   const link = 'https://www.fshare.vn/file/' + item.linkcode;
   const [mystyle, setMystyle] = useState({
-    backgroundColor: 'rgba(21, 28, 13, 0.33)',
+    backgroundColor: 'rgba(0,0,0,0)',
     color: '#fff',
   });
   function XemPhim() {
@@ -29,7 +29,7 @@ const ItemMovieInFolder = ({item}) => {
   return (
     <TouchableOpacity
       activeOpacity={1}
-      style={[styles.item, {backgroundColor: 'rgba(21, 28, 13, 0.33)'}]}
+      style={[styles.item, {backgroundColor: 'rgba(0, 0, 0, 0)'}]}
       onPress={() => XemPhim()}
       onFocus={() => {
         setMystyle({
@@ -38,7 +38,7 @@ const ItemMovieInFolder = ({item}) => {
       }}
       onBlur={() => {
         setMystyle({
-          backgroundColor: 'rgba(21, 28, 13, 0.33)',
+          backgroundColor: 'rgba(0, 0, 0, 0)',
         });
       }}>
       <Text style={[styles.text, {backgroundColor: mystyle.backgroundColor}]}>
@@ -55,11 +55,15 @@ const styles = StyleSheet.create({
     // backgroundColor: '#222',
     flexDirection: 'row',
     flexWrap: 'wrap',
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    justifyContent:"space-between"
   },
   text: {
-    fontSize: 30,
-    backgroundColor: 'rgba(21, 28, 13, 0.33)',
-    color: '#fff',
+    fontSize: 25,
+    backgroundColor: 'rgba(0,0,0,0)',
+    color: 'black',
+    margin: 10,
   },
 });
 export default ItemMovieInFolder;

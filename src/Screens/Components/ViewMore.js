@@ -16,6 +16,7 @@ var width = Dimensions.get('screen').width;
 var height = Dimensions.get('screen').height;
 var checkNgang = width > height ? true : false;
 import {getViewMore} from '../API/getViewMore';
+import {FlatGrid} from 'react-native-super-grid';
 
 const ViewMore = () => {
   const link = useSelector(state => state.setting.link);
@@ -66,7 +67,12 @@ const ViewMore = () => {
           })}
         </View>
       </ScrollView> */}
-      <FlatList
+      <FlatGrid
+        itemDimension={130}
+        items={listPhim}
+        renderItem={({item}) => <ItemMovie item={item} />}
+      />
+      {/* <FlatList
         data={listPhim}
         renderItem={({item}) => <ItemMovie item={item} />}
         keyExtractor={(item, index) => index.toString()}
@@ -77,7 +83,7 @@ const ViewMore = () => {
           setPage(page + 1);
           console.log('avo more');
         }}
-      />
+      /> */}
       {loading ? <ActivityIndicator size="large" color="#0000ff" /> : null}
       <TouchableOpacity
         activeOpacity={1}

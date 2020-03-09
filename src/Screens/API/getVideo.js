@@ -1,5 +1,6 @@
 import HTMLParser from 'fast-html-parser';
 // import hza from './../Components/hza';
+import {getStore} from './../../Redux/Saga/API/Store';
 import axios from 'axios';
 
 export const getVideo = item => {
@@ -10,7 +11,7 @@ export const getVideo = item => {
       //   getFPRO(item.link);
       //   break;
       case 'B.PRO:':
-        getBPRO(item.link).then(data => resolve(data));
+        // getBPRO(item.link).then(data => resolve(data));
         break;
       case 'S.PRO:':
         getSPRO(item.link).then(data => resolve(data));
@@ -24,15 +25,27 @@ export const getVideo = item => {
 export const getFPRO = link => {
   return new Promise(function(resolve, reject) {
     getLinkFshare(link).then(data => {
-      fetch('https://nhacsong.pro/API/C_fshare/getLink?link=' + data.link, {
-        method: 'GET',
-      })
-        .then(data => {
-          return data.json();
-        })
-        .then(data => {
-          resolve(data.link);
-        });
+      getStore().then(tmp => {
+        var themChuoi = '';
+        if (tmp.useFshare) {
+          themChuoi = '&username=' + tmp.username + '&password=' + tmp.password;
+        }
+
+        fetch(
+          'https://nhacsong.pro/API/C_fshare/getLink?link=' +
+            data.link +
+            themChuoi,
+          {
+            method: 'GET',
+          },
+        )
+          .then(data => {
+            return data.json();
+          })
+          .then(data => {
+            resolve(data.link);
+          });
+      });
     });
   });
 };

@@ -108,8 +108,49 @@ const SettingScreen = () => {
         />
         <Text style={styles.textCode}>Kodi</Text>
       </View>
-      <TextInput placeholder={'Nhập Code'} style={{fontSize: 30}} />
+
       <View style={{borderTopWidth: 1, marginTop: 15}}>
+        <Text style={styles.title}>Tài khoản Fshare</Text>
+        <View style={styles.checkBox}>
+          <CheckBox
+            value={tmpSetting.useFshare === true ? true : false}
+            onChange={() =>
+              setSetting(
+                Object.assign({}, tmpSetting, {
+                  useFshare: !tmpSetting.useFshare,
+                }),
+              )
+            }
+          />
+          <Text style={styles.textCode}>Sử dụng tài khoản</Text>
+        </View>
+        {/* <View> */}
+        <TextInput
+          placeholder="Username"
+          style={styles.textCode}
+          value={setting.username}
+          onChangeText={t => {
+            setSetting(
+              Object.assign({}, tmpSetting, {
+                username: t,
+              }),
+            );
+          }}
+        />
+        <TextInput
+          placeholder="Password"
+          style={styles.textCode}
+          value={setting.password}
+          secureTextEntry
+          onChangeText={t => {
+            setSetting(
+              Object.assign({}, tmpSetting, {
+                password: t,
+              }),
+            );
+          }}
+        />
+        {/* </View> */}
         <Text style={styles.textCode}>
           Phiên bản hiện tại của bạn là {config.ver}
         </Text>

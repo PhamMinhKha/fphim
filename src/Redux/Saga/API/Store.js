@@ -15,6 +15,9 @@ exports.getStore = function(user) {
           code: '',
           chamdiem: false,
           player: 'native',
+          useFshare: false,
+          username: null,
+          password: null,
         };
         await AsyncStorage.setItem('@setting', JSON.stringify(data));
         thanhcong(data);
