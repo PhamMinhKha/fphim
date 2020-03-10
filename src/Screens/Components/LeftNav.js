@@ -26,7 +26,7 @@ const DATA = [
     link: 'https://phim.didibkk.com/genre/hanh-dong/',
   },
   {
-    title: 'Khoa học viễn tưỡng',
+    title: 'Viễn tưỡng',
     id: 'Khoa học viễn tưỡng',
     link: 'https://phim.didibkk.com/genre/khoa-hoc-vien-tuong/',
   },
@@ -44,6 +44,16 @@ const DATA = [
     title: 'Folder Fshare',
     id: 'FolderFshare',
     link: 'https://www.fshare.vn/site/topfollow',
+  },
+  {
+    title: 'Yêu Thích',
+    id: 'Yêu Thích',
+    link: '',
+  },
+  {
+    title: 'Đã Xem',
+    id: 'Đã Xem',
+    link: '',
   },
   // {
   //   title: 'Phim Bộ',

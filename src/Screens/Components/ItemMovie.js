@@ -3,28 +3,81 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {Navigation} from 'react-native-navigation';
 import VideoScreen from './../VideoScreen';
 import DetailScreen from './../DetailScreen';
-
+import Realm from 'realm';
 const ItemMovie = ({item}) => {
   // console.log(item);
+  // {
+  //   thumb: "https://phim.didibkk.com/wp-content/uploads/2019/07/3FrGhwhyZdNtdZRXS6jQbFw9KYB-185x278.jpg",
+  //   link: "https://phim.didibkk.com/movies/above-the-shadows/",
+  //   title: "Above The Shadows",
+  //   year: "2019"
+  // }
   const [FocusStyle, SetFocusStyle] = useState(0.9);
   const [FocusStyle2, SetFocusStyle2] = useState('#222');
   function push(item) {
-    // Navigation.registerComponent(`Video`, () => VideoScreen);
-    Navigation.registerComponent(`DetailScreen`, () => DetailScreen);
-    Navigation.push('myStack', {
-      component: {
-        id: 'DetailScreen',
-        name: 'DetailScreen',
-        passProps: {
-          item,
-        },
-        options: {
-          statusBar: {
-            visible: false,
+    // Create reference
+    Realm.open({
+      schema: [
+        {
+          name: 'DaXem',
+          properties: {
+            thumb: 'string',
+            link: 'string',
+            title: 'string',
+            year: 'string',
           },
         },
-      },
-    });
+      ],
+    })
+      .then(realm => {
+        var check = realm.objects('DaXem').filtered('link ="' + item.link + '"')
+          .length;
+        if (check === 0)
+          realm.write(() => {
+            realm.create('DaXem', item);
+          });
+        // realm.write(() => {
+        //   console.log('da them vao reaml');
+
+        //   var t = realm.create('DaXem', item);
+
+        // });
+        realm.close();
+      })
+      .catch(err => console.log(err));
+    // Navigation.registerComponent(`Video`, () => VideoScreen);
+    if (item.year === 'FolderLink') {
+      Navigation.push('myStack', {
+        component: {
+          id: 'VideoScreen',
+          name: 'VideoScreen',
+          passProps: {
+            item: item.link,
+          },
+          options: {
+            statusBar: {
+              visible: false,
+            },
+          },
+        },
+      });
+    } else {
+      Navigation.registerComponent(`DetailScreen`, () => DetailScreen);
+      Navigation.push('myStack', {
+        component: {
+          id: 'DetailScreen',
+          name: 'DetailScreen',
+          passProps: {
+            item,
+          },
+          options: {
+            statusBar: {
+              visible: false,
+            },
+          },
+        },
+      });
+    }
   }
 
   return (
@@ -42,7 +95,10 @@ const ItemMovie = ({item}) => {
       onPress={function() {
         push(item);
       }}>
-      <Image source={{uri: item.thumb}} style={{width: 118 * 1.2, height: 174 * 1.2}} />
+      <Image
+        source={{uri: item.thumb}}
+        style={{width: 118 * 1.2, height: 174 * 1.2}}
+      />
       <Text
         style={[styles.title, {backgroundColor: FocusStyle2}]}
         lineBreakMode={1}>

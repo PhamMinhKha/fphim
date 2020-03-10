@@ -28,7 +28,7 @@ const options = function() {
 };
 const VideoScreen = ({item}) => {
   Orientation.lockToLandscape();
-
+  console.log(item);
   const [duration, setDuration] = useState(0);
   const [showControl, setShowControl] = useState(true);
   const [timeNow, setTimeNow] = useState(0);

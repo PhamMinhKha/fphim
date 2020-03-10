@@ -16,6 +16,7 @@ import BG from './../Assets/img/bgDetail.jpg';
 import {getDetail, getServerAndChapter} from './API/getDetail';
 import VideoScreen from './VideoScreen';
 import ChapterItem from './Components/DetailScreenComponent/ChapterItem';
+import Realm from 'realm';
 
 const height = Dimensions.get('screen').height;
 const DetailScreen = ({item}) => {
@@ -35,7 +36,38 @@ const DetailScreen = ({item}) => {
     };
   }, []);
   console.log(listServerAndChapter);
+  function LuuYeuThich(tmp) {
+    Realm.open({
+      schema: [
+        {
+          name: 'YeuThich',
+          properties: {
+            thumb: 'string',
+            link: 'string',
+            title: 'string',
+            year: 'string',
+          },
+        },
+      ],
+    })
+      .then(realm => {
+        var check = realm
+          .objects('YeuThich')
+          .filtered('link ="' + tmp.link + '"').length;
+        if (check === 0)
+          realm.write(() => {
+            realm.create('YeuThich', tmp);
+          });
+        // realm.write(() => {
+        //   console.log('da them vao reaml');
 
+        //   var t = realm.create('DaXem', item);
+
+        // });
+        realm.close();
+      })
+      .catch(err => console.log(err));
+  }
   function showListServerAndChapter() {
     var HTML = [];
     HTML = listServerAndChapter.map((value, index) => {
@@ -63,9 +95,9 @@ const DetailScreen = ({item}) => {
             <View>
               <Text style={styles.info}>{phim.infofilm}</Text>
             </View>
-            {/* <TouchableOpacity>
-              <Text style={styles.button}>Xem Ngay</Text>
-            </TouchableOpacity> */}
+            <TouchableOpacity onPress={LuuYeuThich(item)}>
+              <Text style={styles.button}>Lưu vào yêu thích</Text>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -161,8 +193,8 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   button: {
-    color: 'silver',
-    backgroundColor: 'blue',
+    color: 'white',
+    backgroundColor: 'red',
     alignSelf: 'flex-start',
     paddingLeft: 10,
     paddingRight: 10,

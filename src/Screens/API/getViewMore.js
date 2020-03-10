@@ -75,7 +75,9 @@ function getViewMoreAnotherCategory(link, page) {
       })
       .then(data => {
         var root = HTMLParser.parse(data);
-        var htmlPhimMoi = root.querySelector('#contenedor .items')['childNodes'];
+        var htmlPhimMoi = root.querySelector('#contenedor .items')[
+          'childNodes'
+        ];
         // console.log(htmlPhimMoi);
         var listphim = [];
         // console.log(htmlPhimMoi);

@@ -95,6 +95,7 @@ const SettingScreen = () => {
         />
         <Text style={styles.textCode}>VLC player</Text>
       </View>
+
       <View style={styles.checkBox}>
         <CheckBox
           value={tmpSetting.player === 'org.xbmc.kodi' ? true : false}
@@ -108,7 +109,21 @@ const SettingScreen = () => {
         />
         <Text style={styles.textCode}>Kodi</Text>
       </View>
-
+      <View style={styles.checkBox}>
+        <CheckBox
+          value={
+            tmpSetting.player === 'com.lonelycatgames.Xplore' ? true : false
+          }
+          onChange={() =>
+            setSetting(
+              Object.assign({}, tmpSetting, {
+                player: 'com.lonelycatgames.Xplore',
+              }),
+            )
+          }
+        />
+        <Text style={styles.textCode}>X-plore (Đề Nghị)</Text>
+      </View>
       <View style={{borderTopWidth: 1, marginTop: 15}}>
         <Text style={styles.title}>Tài khoản Fshare</Text>
         <View style={styles.checkBox}>

@@ -6,8 +6,32 @@ const ChapterItem = ({item}) => {
   //   console.log(item);
   const [myStyle, setMystyle] = useState({bg: '#f5ec42'});
   function XemPhim(link) {
-    // Navigation.registerComponent(`VideoScreen`, () => VideoScreen);
-    // console.log(link);
+    // var tmp = {
+    //   link: item.linkcode,
+    //   thumb:
+    //     'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.deviantart.com%2Fduongthanhvu%2Fart%2FFshare-403568416&psig=AOvVaw3BHG-OyR28NDYLYbpSyuen&ust=1583889546479000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPjNh8HejugCFQAAAAAdAAAAABAD',
+    //   title: item.name,
+    //   year: 'FolderLink',
+    // };
+    // // Navigation.registerComponent(`Video`, () => VideoScreen);
+    // Realm.open({
+    //   schema: [
+    //     {
+    //       name: 'DaXem',
+    //       properties: {
+    //         thumb: 'string',
+    //         link: 'string',
+    //         title: 'string',
+    //         year: 'string',
+    //       },
+    //     },
+    //   ],
+    // }).then(realm => {
+    //   realm.write(() => {
+    //     var t = realm.create('DaXem', tmp);
+    //     realm.close();
+    //   });
+    // });
     Navigation.push('myStack', {
       component: {
         id: 'VideoScreen',

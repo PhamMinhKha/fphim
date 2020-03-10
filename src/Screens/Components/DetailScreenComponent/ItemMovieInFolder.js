@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {Navigation} from 'react-native-navigation';
+import Realm from 'realm';
+
 const ItemMovieInFolder = ({item}) => {
   console.log('xxxx', item);
   const link = 'https://www.fshare.vn/file/' + item.linkcode;
@@ -9,6 +11,39 @@ const ItemMovieInFolder = ({item}) => {
     color: '#fff',
   });
   function XemPhim() {
+    var tmp = {
+      link: 'https://www.fshare.vn/file/' + item.linkcode,
+      thumb: 'https://nhacsong.pro/public/phimthuyetminh/folder.png',
+      title: item.name,
+      year: 'FolderLink',
+    };
+    // Navigation.registerComponent(`Video`, () => VideoScreen);
+    Realm.open({
+      schema: [
+        {
+          name: 'DaXem',
+          properties: {
+            thumb: 'string',
+            link: 'string',
+            title: 'string',
+            year: 'string',
+          },
+        },
+      ],
+    })
+      .then(realm => {
+        realm.write(() => {
+          realm.create('DaXem', tmp);
+        });
+        // realm.write(() => {
+        //   console.log('da them vao reaml');
+
+        //   var t = realm.create('DaXem', item);
+
+        // });
+        realm.close();
+      })
+      .catch(err => console.log(err));
     // Navigation.registerComponent(`VideoScreen`, () => VideoScreen);
     // console.log(link);
     Navigation.push('myStack', {
@@ -57,7 +92,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     borderTopWidth: 2,
     borderBottomWidth: 2,
-    justifyContent:"space-between"
+    justifyContent: 'space-between',
   },
   text: {
     fontSize: 25,

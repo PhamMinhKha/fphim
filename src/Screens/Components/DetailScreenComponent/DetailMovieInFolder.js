@@ -15,6 +15,7 @@ import ItemMovieInFolder from './ItemMovieInFolder';
 import {getFshareFolder} from './../../API/getFolderFshare';
 import bg from './../../../Assets/img/bg.webp';
 const {width, height} = Dimensions.get('screen');
+
 // import {FlatGrid} from 'react-native-super-grid';
 const DetailMovieInFolder = ({item}) => {
   const [list, setList] = useState([]);

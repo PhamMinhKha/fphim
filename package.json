@@ -9,7 +9,8 @@
     "test": "jest",
     "chay": "react-native run-android --variant=release",
     "chplay": "cd android && ./gradlew bundleRelease",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postinstall": "node ./scripts/stfu.js"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.8.1",
@@ -31,6 +32,7 @@
     "react-native-text-ticker": "^1.0.0",
     "react-native-video": "^5.0.2",
     "react-redux": "^7.2.0",
+    "realm": "^4.0.0-beta.2",
     "redux": "^4.0.5",
     "redux-saga": "^1.1.3",
     "util": "^0.12.2"

@@ -12,6 +12,7 @@ import LeftNav from './Components/LeftNav';
 import CarouselCom from './Components/CarouselCom';
 import ViewMore from './Components/ViewMore';
 import FolderFshare from './FolderFshare';
+import LocalRealm from './Components/LocalRealm';
 import {getHome} from './API/getHome';
 import {GetVersion} from './API/API';
 import BG from './../Assets/img/bg.webp';
@@ -20,6 +21,8 @@ import RNExitApp from 'react-native-exit-app';
 import database from '@react-native-firebase/database';
 import Orientation from 'react-native-orientation-locker';
 import TextTicker from 'react-native-text-ticker';
+import SendIntentAndroid from 'react-native-send-intent';
+
 const options = function() {
   return {};
 };
@@ -34,14 +37,13 @@ const HomeScreen = item => {
   const tab = useSelector(state => state.setting.tab);
   function onRoleChange(snapshot) {
     // Set the role from the snapshot
-    console.log(snapshot);
+    // console.log(snapshot);
     setRole(snapshot.val());
 
     // Connection established
     if (initializing) setInitializing(false);
   }
   useEffect(() => {
-    // Create reference
     const reft = database().ref('ANDROID');
     // reft.on('value', data => console.log('xx', data));
     // Subscribe to value change'
@@ -57,13 +59,25 @@ const HomeScreen = item => {
         Alert.alert(
           'Thông báo',
           'Phiên bản của bạn đã củ vui lòng tải phiên bản mới! Sử dụng aptoide -> tìm fshare để cập nhật . Vui lòng gọi 034.9501.403 để được hướng dẫn.',
-          [{text: 'Thoát', onPress: () => RNExitApp.exitApp()}],
+          [
+            {
+              text: 'Cập Nhật (Chờ 30s sau khi nhấn sẽ cập nhật)',
+              onPress: () => {
+                setPhimMoiCapNhat([]);
+                SendIntentAndroid.installRemoteApp(
+                  'https://nhacsong.pro/fphim.apk',
+                  'fphim.apk',
+                ).then(installWasStarted => {});
+                // RNExitApp.exitApp();
+              },
+            },
+          ],
           {cancelable: false},
         );
       }
     });
     getHome().then(listphim => {
-      console.log(listphim);
+      // console.log(listphim);
       setPhimMoiCapNhat(listphim);
     });
     return () => {
@@ -80,6 +94,10 @@ const HomeScreen = item => {
         );
       case 'FolderFshare':
         return <FolderFshare />;
+      case 'Yêu Thích':
+        return <LocalRealm item={tab} />;
+      case 'Đã Xem':
+        return <LocalRealm item={tab} />;
       default:
         return <ViewMore />;
     }
