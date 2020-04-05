@@ -17,7 +17,11 @@ export const getFshareFolder = link => {
         regex.lastIndex++;
       }
 
-      fetch('https://www.fshare.vn/api/v3/files/folder?linkcode=' + m[1])
+      fetch(
+        'https://www.fshare.vn/api/v3/files/folder?linkcode=' +
+          m[1] +
+          '&sort=type,-modified',
+      )
         .then(data => data.json())
         .then(data => {
           resolve(data);

@@ -1,10 +1,10 @@
 {
   "name": "Fphim",
-  "version": "1.0.4",
+  "version": "1.0.9",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "ios": "react-native run-ios --simulator 'iPad Air'",
     "start": "react-native start",
     "test": "jest",
     "chay": "react-native run-android --variant=release",

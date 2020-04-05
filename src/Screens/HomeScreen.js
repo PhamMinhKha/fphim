@@ -10,6 +10,7 @@ import {
 import {useSelector, useDispatch} from 'react-redux';
 import LeftNav from './Components/LeftNav';
 import CarouselCom from './Components/CarouselCom';
+import ThemLink from './Components/ThemLink';
 import ViewMore from './Components/ViewMore';
 import FolderFshare from './FolderFshare';
 import LocalRealm from './Components/LocalRealm';
@@ -35,6 +36,7 @@ const HomeScreen = item => {
   const [initializing, setInitializing] = useState(true);
   // const [tab, setTab] = useState('PhimLe');
   const tab = useSelector(state => state.setting.tab);
+  const setting = useSelector(state => state.setting);
   function onRoleChange(snapshot) {
     // Set the role from the snapshot
     // console.log(snapshot);
@@ -44,6 +46,7 @@ const HomeScreen = item => {
     if (initializing) setInitializing(false);
   }
   useEffect(() => {
+    dispatch({type: 'GET_SETTING'});
     const reft = database().ref('ANDROID');
     // reft.on('value', data => console.log('xx', data));
     // Subscribe to value change'
@@ -98,6 +101,8 @@ const HomeScreen = item => {
         return <LocalRealm item={tab} />;
       case 'Đã Xem':
         return <LocalRealm item={tab} />;
+      case 'Thêm Link':
+        return <ThemLink />;
       default:
         return <ViewMore />;
     }

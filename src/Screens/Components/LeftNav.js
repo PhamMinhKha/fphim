@@ -55,6 +55,11 @@ const DATA = [
     id: 'Đã Xem',
     link: '',
   },
+  {
+    title: 'Thêm Link',
+    id: 'Thêm Link',
+    link: '',
+  },
   // {
   //   title: 'Phim Bộ',
   //   id: 'tv-shows',

@@ -37,6 +37,8 @@ const VideoScreen = ({item}) => {
   const [pause, setPause] = useState(false);
   const [timeout, settimeout] = useState(0);
   const [myStyleButton, setMyStyleButton] = useState(0.9);
+  const [myStyleButton2, setMyStyleButton2] = useState(0.9);
+  const [myStyleButton3, setMyStyleButton3] = useState(0.9);
   const Player = useSelector(state => state.setting.player);
   const player = useRef();
   const refSeek = useRef();
@@ -52,6 +54,7 @@ const VideoScreen = ({item}) => {
       } else if (data.search('credentials') !== -1) {
         ToastAndroid.show('Tài khoản Fshare Admin hết hạn', ToastAndroid.SHORT);
       } else {
+        console.log(data);
         setSource(data);
       }
 
@@ -68,10 +71,16 @@ const VideoScreen = ({item}) => {
       setShowControl(false);
     }, 10000);
   }
-  function openMX(link) {
-    SendIntentAndroid.openAppWithData(Player, link, 'video/*', {
-      position: {type: 'int', value: 60},
-    }).then(wasOpened => {});
+  function openMX(link, customPlayer = null) {
+    if (customPlayer !== null) {
+      SendIntentAndroid.openAppWithData(customPlayer, link, 'video/*', {
+        position: {type: 'int', value: 60},
+      }).then(wasOpened => {});
+    } else {
+      SendIntentAndroid.openAppWithData(Player, link, 'video/*', {
+        position: {type: 'int', value: 60},
+      }).then(wasOpened => {});
+    }
   }
   return (
     <View style={{flex: 1}}>
@@ -130,6 +139,31 @@ const VideoScreen = ({item}) => {
         ) : (
           <></>
         )}
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={() => openMX(source, 'org.xbmc.kodi')}
+        activeOpacity={1}
+        onFocus={() => setMyStyleButton2(1)}
+        onBlur={() => setMyStyleButton2(0.9)}
+        style={{
+          transform: [{scale: myStyleButton2}],
+          display: showControl ? 'flex' : 'none',
+          alignSelf: 'flex-end',
+        }}>
+        <Text style={styles.buttonPlay}>Kodi</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => openMX(source, 'com.lonelycatgames.Xplore')}
+        activeOpacity={1}
+        onFocus={() => setMyStyleButton3(1)}
+        onBlur={() => setMyStyleButton3(0.9)}
+        style={{
+          transform: [{scale: myStyleButton3}],
+          display: showControl ? 'flex' : 'none',
+          alignSelf: 'flex-end',
+        }}>
+        <Text style={styles.buttonPlay}>X-plore</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => setPause(!pause)}

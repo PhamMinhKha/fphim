@@ -23,20 +23,21 @@ const LocalRealm = ({item}) => {
   // console.log('aaaa', item);
   const link = useSelector(state => state.setting.link);
   const tab = useSelector(state => state.setting.tab);
+  const [ThuVien, setThuVien] = useState('DaXem');
   const [listPhim, setlistPhim] = useState([]);
   const [page, setPage] = useState(1);
   const [myButton, setMyButton] = useState(0.85);
   const [timeout, settimeout] = useState(0);
   const [loading, setLoading] = useState(true);
+  console.log(item);
   useEffect(() => {
     // Query
-    var ThuVien = 'DaXem';
+
+    // setThuVien('DaXem');
     if (item === 'Đã Xem') {
-      console.log('daxem');
-      ThuVien = 'DaXem';
+      setThuVien('DaXem');
     } else {
-      ThuVien = 'YeuThich';
-      console.log('YeuThich');
+      setThuVien('YeuThich');
     }
     Realm.open({
       schema: [
@@ -84,7 +85,7 @@ const LocalRealm = ({item}) => {
     return () => {
       setlistPhim([]);
     };
-  }, [link]);
+  }, [tab]);
   // useEffect(() => {
   //   getViewMore(link, page).then(data => {
   //     var t = listPhim.concat(data);
