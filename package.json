@@ -17,7 +17,7 @@
     "@react-native-community/slider": "^2.0.8",
     "@react-native-firebase/app": "^6.3.4",
     "@react-native-firebase/database": "^6.3.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "fast-html-parser": "^1.0.1",
     "react": "16.9.0",
     "react-native": "0.61.5",
